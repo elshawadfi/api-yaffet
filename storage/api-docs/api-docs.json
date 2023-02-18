@@ -1,0 +1,139 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Your super  ApplicationAPI",
+        "version": "1.0.0"
+    },
+    "paths": {
+        "/api/getToken": {
+            "post": {
+                "description": "Login with token",
+                "requestBody": {
+                    "description": "",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "deviceToken"
+                                ],
+                                "properties": {
+                                    "deviceToken": {
+                                        "type": "string",
+                                        "format": "string",
+                                        "example": "hdj84t3489hdfr"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                }
+            }
+        },
+        "/api/userPrice": {
+            "post": {
+                "description": "user pass current price ( alert )",
+                "requestBody": {
+                    "description": "pass price , metalName , user_deviceToken and currency ",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "price,metalName,user_deviceToken,currency"
+                                ],
+                                "properties": {
+                                    "user_deviceToken": {
+                                        "type": "string",
+                                        "format": "string",
+                                        "example": "hdj84t3489hdfr"
+                                    },
+                                    "price": {
+                                        "type": "float",
+                                        "format": "string",
+                                        "example": "332"
+                                    },
+                                    "metalName": {
+                                        "type": "string",
+                                        "format": "string",
+                                        "example": "GOLD"
+                                    },
+                                    "currency": {
+                                        "type": "string",
+                                        "format": "string",
+                                        "example": "EGP"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                }
+            }
+        },
+        "/api/getLastprice": {
+            "get": {
+                "description": "get last price to 3 metals",
+                "responses": {
+                    "200": {
+                        "description": "Success"
+                    }
+                }
+            }
+        },
+        "/api/getHistPrice/silver": {
+            "get": {
+                "description": "call historical price of silver",
+                "responses": {
+                    "200": {
+                        "description": "Success"
+                    }
+                }
+            }
+        },
+        "/api/getHistPrice/gold": {
+            "get": {
+                "description": "call historical price of gold",
+                "responses": {
+                    "200": {
+                        "description": "Success"
+                    }
+                }
+            }
+        },
+        "/api/getHistPrice/platinum": {
+            "get": {
+                "description": "call historical price of platinum",
+                "responses": {
+                    "200": {
+                        "description": "Success"
+                    }
+                }
+            }
+        },
+        "/api/getLastCurrency": {
+            "get": {
+                "description": "Get last Currency",
+                "responses": {
+                    "200": {
+                        "description": "Success"
+                    }
+                }
+            }
+        }
+    },
+    "security": [
+        []
+    ]
+}
