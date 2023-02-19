@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ApiController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -34,3 +35,8 @@ Route::get('/send_notification',[AdminController::class,'handleSendNotification'
 Route::get('/saveLastCurrency',[AdminController::class,'saveLastCurrency']);
 
 
+Route::get('/', function(){
+    return view('login');
+});
+
+Route::get('/home', [DashboardController::class, 'index'])->name('dashboard');
