@@ -83,7 +83,7 @@ class ShowController extends Controller
 			   ->orderBy('metalPrice', 'desc')
                 ->latest()
                 ->first();
-						$price = ($unit == 'gm') ? $year_metals->metalPrice / self::oz_to_gm :$year_metals->metalPrice ;
+				$price = ($unit == 'gm') ? $year_metals->metalPrice / self::oz_to_gm :$year_metals->metalPrice ;
 
 		         $data['year']['price'] = $price;
 		         $data['year']['value'] = $price;
@@ -98,26 +98,54 @@ class ShowController extends Controller
 			   ->orderBy('metalPrice', 'desc')
                 ->latest()
                 ->first();
-						$price = ($unit == 'gm') ? $all_metals->metalPrice / self::oz_to_gm :$all_metals->metalPrice ;
+				$price = ($unit == 'gm') ? $all_metals->metalPrice / self::oz_to_gm :$all_metals->metalPrice ;
 
 		         $data['all']['price'] = $price;
 		         $data['all']['value'] = $price;
 		         $data['all']['percent'] = $price;
+		
+		
 		return $data;
 	}
 		
 	private function getDataSet($request , $code  , $unit){
 		$period = $request->get("period", "day");
 		
+		$prices = ['price'];
 		
 
+		if($period != 'all'){
+			
+		
+		
 		$date = date('Y-m-d');
 		$dates = $this->getStartAndEndDates($date);
+		
+		
         $start_date = $dates[$period]['start'];
         $end_date = $dates[$period]['end'];
 		
+		}else{
+			$days = ['days'];
+			  $results = Metal::where("metalName", $code)
+				->distinct()
+                ->get();
+			foreach($results as $result){
+				
+				  array_push($days , $result->date);
+				
+				
+				$price = ($unit == 'gm') ? $result->metalPrice / self::oz_to_gm :$result->metalPrice ;
+					
+				
+				
+				array_push($prices , $price);
+
+		}
+			return [$days , $prices];
+		}
 		
-			$prices = ['prices'];
+			
 		if($period == 'day'){
 			 $days = ['times'];
 			  $results = Metal::where("metalName", $code)
@@ -240,7 +268,7 @@ class ShowController extends Controller
             "day" => ["start" => $day_start, "end" => $day_end],
             "week" => ["start" => $week_start, "end" => $week_end],
             "month" => ["start" => $month_start, "end" => $month_end],
-            "year" => ["start" => $year_start, "end" => $year_end],
+            "year" => ["start" => $year_start, "end" => $year_end]
         ];
 
         return $dates;
