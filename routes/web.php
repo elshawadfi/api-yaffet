@@ -2,9 +2,11 @@
 
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ApiController;
-use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\Dashboard\DashboardAuthController;
+use App\Http\Controllers\Dashboard\IndexController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Session;
 
 /*
 |--------------------------------------------------------------------------
@@ -37,6 +39,16 @@ Route::get('/saveLastCurrency',[AdminController::class,'saveLastCurrency']);
 
 Route::get('/', function(){
     return view('login');
-});
+})->name('login')->middleware('guest');
 
-Route::get('/home', [DashboardController::class, 'index'])->name('dashboard');
+Route::post('/sign-in', [DashboardAuthController::class, 'login'])->name('sign-in');
+
+Route::get('/admin', [IndexController::class, 'index'])->name('admin-index');
+
+Route::get('logout', [DashboardAuthController::class, 'logout'])->name('logout');
+
+Route::get('/admin/profile', [DashboardAuthController::class, 'profile'])->name('profile');
+
+Route::get('/tables', function(){
+    return view('tables');
+})->name('tables');

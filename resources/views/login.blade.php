@@ -1,13 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    {{-- <div class="container position-sticky z-index-sticky top-0">
-        <div class="row">
-            <div class="col-12">
-                @include('layouts.navbars.guest.navbar')
-            </div>
-        </div>
-    </div> --}}
+
     <main class="main-content  mt-0">
         <section>
             <div class="page-header min-vh-100">
@@ -19,26 +13,26 @@
                                     <h4 class="font-weight-bolder">Sign In</h4>
                                     <p class="mb-0">Enter your email and password to sign in</p>
                                 </div>
+                            
                                 <div class="card-body">
-                                    <form role="form" method="POST" action="#">
+                                    @if (Session::has('error'))
+                                        <div class="alert alert-danger text-white">{{ Session::get('error') }}</div>
+                                    @endif
+                                    <form role="form" method="POST" action="{{ route('sign-in') }}">
                                         @csrf
                                         @method('post')
                                         <div class="flex flex-col mb-3">
-                                            <input type="email" name="email" class="form-control form-control-lg" value="{{ old('email') ?? 'admin@argon.com' }}" aria-label="Email">
-                                            @error('email') <p class="text-danger text-xs pt-1"> {{$message}} </p>@enderror
+                                            <input type="email" name="email" class="form-control form-control-lg" value="{{ old('email') ?? 'enter your email' }}" aria-label="Email">
                                         </div>
                                         <div class="flex flex-col mb-3">
-                                            <input type="password" name="password" class="form-control form-control-lg" aria-label="Password" value="secret" >
-                                            @error('password') <p class="text-danger text-xs pt-1"> {{$message}} </p>@enderror
+                                            <input type="password" name="password" class="form-control form-control-lg" aria-label="Password" placeholder="password" >
                                         </div>
                                         <div class="form-check form-switch">
                                             <input class="form-check-input" name="remember" type="checkbox" id="rememberMe">
                                             <label class="form-check-label" for="rememberMe">Remember me</label>
                                         </div>
                                         <div class="text-center">
-                                            <a href="{{ route('dashboard') }}" class="btn btn-lg btn-primary btn-lg w-100 mt-4 mb-0" >
-                                                Sign In
-                                            </a>                                            
+                                            <button type="submit" class="btn btn-lg btn-primary btn-lg w-100 mt-4 mb-0">Sign In</button>                                            
                                         </div>
                                     </form>
                                 </div>
