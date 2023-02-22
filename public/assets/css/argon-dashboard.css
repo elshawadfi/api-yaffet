@@ -682,12 +682,6 @@ progress {
   margin-top: var(--bs-gutter-y);
 }
 
-.row form{
-  min-height: 500px !important;
-}
-
-
-
 .col {
   flex: 1 0 0%;
 }

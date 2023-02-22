@@ -45,6 +45,8 @@ Route::get('/', function(){
 
 Route::post('/sign-in', [DashboardAuthController::class, 'login'])->name('sign-in');
 
+
+
 Route::get('/admin', [IndexController::class, 'index'])->name('admin-index');
 
 Route::get('logout', [DashboardAuthController::class, 'logout'])->name('logout');

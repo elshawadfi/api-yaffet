@@ -5,8 +5,8 @@
     <div id="alert">
         @include('components.alert')
     </div>
-    <div class="container-fluid py-4">
-        <div class="row">
+    <div class="container-fluid py-2">
+        <div class="row min-height-500">
             <div class="col-md-12">
                 <div class="card">
                     <form role="form" method="POST" action="{{ route('currencies-store') }}" >

@@ -31,7 +31,11 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="example-text-input" class="form-control-label">Currency</label>
-                                        <input class="form-control" type="text" name="currency" value="{{ $data->currency }}">
+                                        <select name="currency" class="form-control">
+                                            @foreach ($currencies as $currency)
+                                                <option value="{{ $currency->currency_name }}"{{ ($data->id == $currency->id)?'selected':null }}>{{ $currency->currency_name }}</option>
+                                            @endforeach                                            
+                                        </select>
                                         @error('currency')
                                         <div class="alert alert-danger">{{ $message }}</div>
                                         @enderror

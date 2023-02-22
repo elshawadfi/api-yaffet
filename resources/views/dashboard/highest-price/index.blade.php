@@ -1,7 +1,7 @@
 @extends('layouts.app', ['class' => 'g-sidenav-show bg-gray-100'])
 
 @section('content')
-    @include('layouts.navbars.auth.topnav', ['title' => 'Tables'])
+    @include('layouts.navbars.auth.topnav', ['title' => 'Highest Price'])
     <div id="alert">
         @include('components.alert')
     </div>
@@ -45,7 +45,7 @@
                                             </div>
                                         </td>
                                         <td>
-                                            <p class="text-xs font-weight-bold mb-0">{{ $item->price }}</p>
+                                            <p class="text-xs font-weight-bold mb-0">$ {{ $item->price }}</p>
                                             <p class="text-xs text-secondary mb-0"></p>
                                         </td>
                                         <td class="align-middle text-center text-sm">

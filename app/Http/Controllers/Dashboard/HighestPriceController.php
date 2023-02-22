@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Dashboard;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreHighestPriceRequest;
+use App\Models\Currency;
 use App\Models\HighestPrice;
 use Illuminate\Http\Request;
 
@@ -22,8 +23,9 @@ class HighestPriceController extends Controller
     public function edit(int $id)
     {
         $data = HighestPrice::find($id);
+        $currencies = Currency::all();
 
-        return view('dashboard.highest-price.edit', compact('data'));
+        return view('dashboard.highest-price.edit', compact('data', 'currencies'));
     }
 
     public function update(StoreHighestPriceRequest $request, HighestPrice $metal_price)

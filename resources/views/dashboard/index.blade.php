@@ -13,11 +13,12 @@
                                 <div class="numbers">
                                     <p class="text-sm mb-0 text-uppercase font-weight-bold">{{ $metal->name }}</p>
                                     <h5 class="font-weight-bolder">
-                                        {{ $metal->metalPrice }}
+                                        <span class="text-success text-uppercase font-weight-bolder">$</span>
+                                         {{ $metal->metalPrice }}
                                     </h5>
                                     <p class="mb-0">
-                                        <span class="text-success text-sm font-weight-bolder">+55%</span>
-                                        since yesterday
+                                        <span class="text-success text-sm font-weight-bolder"></span>
+                                        {{ $metal->metalName }}
                                     </p>
                                 </div>
                             </div>
@@ -117,8 +118,8 @@
                                     </td>
                                     <td>
                                         <div class="text-center">
-                                            <p class="text-xs font-weight-bold mb-0">Sales:</p>
-                                            <h6 class="text-sm mb-0">2500</h6>
+                                            <p class="text-xs font-weight-bold mb-0">Price:</p>
+                                            <h6 class="text-sm mb-0">{{ $metal->metalPrice }}</h6>
                                         </div>
                                     </td>
                                     <td>

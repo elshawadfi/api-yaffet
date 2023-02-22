@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Currency;
+use App\Models\HighestPrice;
 use App\Models\Metal;
 use App\Traits\GeneralTrait;
 use Illuminate\Http\Request;
@@ -450,30 +451,17 @@ class ShowController extends Controller
 	
 	public function getHighestPrice(Request $request){
 		
+
+        $metal  = HighestPrice::where('metal_code', $request->metal_code)->first();
+
+        return [
+            'price'=>$metal->price,
+            'metal'=> ($metal->metal_code == 'XAU')? 'Gold': 'Silver',
+            'unit'=> $metal->unit,
+            'currency'=>$metal->currency,
+            'date'=>  Carbon::createFromFormat('Y-m-d', $metal->price_date)->format('j F, Y '),
+            
+        ];
 		
-		
-		$metal = $request->get('metal','gold');
-		
-		if($metal == 'silver'){
-			$date = new \DateTime('2011-04-06 00:00:00', new \DateTimeZone('America/New_York'));
-		
-				
-		return array(
-		'price'=>49.51,
-		'metal'=>'silver',
-		'unit'=>'oz',
-			'currency'=>"USD",
-		'date'=> $date->format(' F, Y ')
-		);
-				
-		}
-		$date = new \DateTime('2020-08-06 00:00:00', new \DateTimeZone('America/New_York'));
-		return array(
-		'price'=>2070.05,
-	     'metal'=>'gold',
-			'currency'=>"USD",
-		'unit'=>'oz',
-		'date'=> $date->format('F j, Y ')
-		);
 	}
 }
