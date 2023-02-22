@@ -6,7 +6,7 @@
     @endif
     @if ($message = session()->has('error'))
         <div class="alert alert-danger" role="alert">
-            <p class="text-white mb-0">{{ session()->get('error') }}</p>
+            <p class="mb-0">{{ session()->get('error') }}</p>
         </div>
     @endif
 </div>

@@ -22,7 +22,7 @@
                                         @csrf
                                         @method('post')
                                         <div class="flex flex-col mb-3">
-                                            <input type="email" name="email" class="form-control form-control-lg" value="{{ old('email') ?? 'enter your email' }}" aria-label="Email">
+                                            <input type="email" name="email" class="form-control form-control-lg" placeholder="Enter your email" value="{{ old('email')}}" aria-label="Email">
                                         </div>
                                         <div class="flex flex-col mb-3">
                                             <input type="password" name="password" class="form-control form-control-lg" aria-label="Password" placeholder="password" >
