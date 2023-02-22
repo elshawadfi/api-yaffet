@@ -5,12 +5,9 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Currency extends Model
+class HighestPrice extends Model
 {
     use HasFactory;
 
-    protected $fillable = [
-       'currency_name', 'currency_code' , 'price_rate'
-    ];
-
+    protected $fillable = ['metal_code', 'price', 'currency', 'price_date', 'unit'];
 }

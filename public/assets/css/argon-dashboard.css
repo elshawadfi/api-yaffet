@@ -682,6 +682,12 @@ progress {
   margin-top: var(--bs-gutter-y);
 }
 
+.row form{
+  min-height: 500px !important;
+}
+
+
+
 .col {
   flex: 1 0 0%;
 }
@@ -8932,7 +8938,7 @@ textarea.form-control-lg {
 
 .px-2 {
   padding-right: 0.5rem !important;
-  padding-left: 0.5rem !important;
+  padding-left: 1.5rem !important;
 }
 
 .px-3 {

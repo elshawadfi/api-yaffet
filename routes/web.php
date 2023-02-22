@@ -2,8 +2,10 @@
 
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ApiController;
+use App\Http\Controllers\Dashboard\CurrencyController;
 use App\Http\Controllers\Dashboard\DashboardAuthController;
 use App\Http\Controllers\Dashboard\IndexController;
+use App\Http\Controllers\Dashboard\HighestPriceController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Session;
@@ -49,6 +51,29 @@ Route::get('logout', [DashboardAuthController::class, 'logout'])->name('logout')
 
 Route::get('/admin/profile', [DashboardAuthController::class, 'profile'])->name('profile');
 
-Route::get('/tables', function(){
-    return view('tables');
-})->name('tables');
+
+/////////////////////////////// Currencies Routes /////////////////////////////////////
+Route::get('admin/currencies', [CurrencyController::class, 'index'])->name('currencies-index');
+
+Route::get('admin/currencies/create', [CurrencyController::class, 'add_currency'])->name('currencies-create');
+
+Route::post('admin/currencies/store', [CurrencyController::class, 'store'])->name('currencies-store');
+
+Route::get('admin/currencies/edit/{id}', [CurrencyController::class, 'edit'])->name('currencies-edit');
+
+Route::post('admin/currencies/update/{currency}', [CurrencyController::class, 'update'])->name('currencies-update');
+
+Route::get('admin/currencies/delete/{currency}', [CurrencyController::class, 'destroy'])->name('currencies-destroy');
+/////////////////////////////// End Currencies Routes /////////////////////////////////////
+
+
+
+
+/////////////////////////////// Highest Prices Routes /////////////////////////////////////
+Route::get('admin/highest-prices', [HighestPriceController::class, 'index'])->name('highest-index');
+
+Route::get('admin/highest-prices/edit/{id}', [HighestPriceController::class, 'edit'])->name('highest-edit');
+
+Route::post('admin/highest-prices/update/{metal_price}', [HighestPriceController::class, 'update'])->name('highest-update');
+
+Route::get('admin/highest-prices/delete/{metal_price}', [HighestPriceController::class, 'destroy'])->name('highest-destroy');
