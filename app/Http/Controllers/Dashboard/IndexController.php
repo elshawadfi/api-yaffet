@@ -10,7 +10,9 @@ class IndexController extends Controller
 {
     public function index()
     {
-        $metals = Metal::all();
+        $metals = Metal::latest()->take(3)->get();
+    
+        
         return view('dashboard.index', compact('metals'));
     }
 }

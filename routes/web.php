@@ -6,7 +6,10 @@ use App\Http\Controllers\Dashboard\CurrencyController;
 use App\Http\Controllers\Dashboard\DashboardAuthController;
 use App\Http\Controllers\Dashboard\IndexController;
 use App\Http\Controllers\Dashboard\HighestPriceController;
+use App\Http\Controllers\Dashboard\SystemCurrenciesController;
 use App\Http\Controllers\UserController;
+use App\Models\Metal;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Session;
 
@@ -76,6 +79,19 @@ Route::middleware(['admin'])->group(function () {
     /////////////////////////////// End Currencies Routes /////////////////////////////////////
     
     
+    ///////////////////////////////System Currencies Routes /////////////////////////////////////
+    Route::get('admin/system-currencies', [SystemCurrenciesController::class, 'index'])->name('system-currencies-index');
+
+    Route::get('admin/system-currencies/create', [SystemCurrenciesController::class, 'add_currency'])->name('system-currencies-create');
+    
+    Route::post('admin/system-currencies/store', [SystemCurrenciesController::class, 'store'])->name('system-currencies-store');
+    
+    Route::get('admin/system-currencies/edit/{id}', [SystemCurrenciesController::class, 'edit'])->name('system-currencies-edit');
+    
+    Route::post('admin/system-currencies/update/{currency}', [SystemCurrenciesController::class, 'update'])->name('system-currencies-update');
+    
+    Route::get('admin/system-currencies/delete/{currency}', [SystemCurrenciesController::class, 'destroy'])->name('system-currencies-destroy');
+    /////////////////////////////// End System Currencies Routes /////////////////////////////////////
     
     
     /////////////////////////////// Highest Prices Routes /////////////////////////////////////

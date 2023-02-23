@@ -48,13 +48,22 @@
             <li class="nav-item mt-3">
                 <h6 class="ps-4 ms-2 text-uppercase text-xs font-weight-bolder opacity-6">Pages</h6>
             </li>
-            <li class="nav-item">
+            <li class="nav-item" style="display:none">
                 <a class="nav-link {{ str_contains(request()->url(), 'currencies-index') == true ? 'active' : '' }}" href="{{ route('currencies-index') }}">
                     <div
                         class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
                         <i class="ni ni-credit-card text-warning text-sm opacity-10"></i>
                     </div>
                     <span class="nav-link-text ms-1">Currencies</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link {{ str_contains(request()->url(), 'system-currencies') == true ? 'active' : '' }}" href="{{ route('system-currencies-index') }}">
+                    <div
+                        class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+                        <i class="ni ni-credit-card text-warning text-sm opacity-10"></i>
+                    </div>
+                    <span class="nav-link-text ms-1">System Currencies</span>
                 </a>
             </li>
             <li class="nav-item">

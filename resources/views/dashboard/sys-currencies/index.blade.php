@@ -9,15 +9,18 @@
                     <div class="row">
                         <div class="col-10">
                             <div class="card-header pb-2">
-                                <h6>All Currencies</h6>
+                                <h6>System Currencies</h6>
                             </div>
                         </div>
                         <div class="col-2">
                             <div class="card-header pb-2">
-                                <a href="{{ route('currencies-create') }}" class="btn btn-primary"><i class="fa fa-plus"></i></a>
+                                <a href="{{ route('system-currencies-create') }}" class="btn btn-primary"><i class="fa fa-plus"></i></a>
                             </div>
                         </div>
     
+                        <div id="alert">
+                            @include('components.alert')
+                        </div>
                     </div>
                     <div class="card-body px-0 pt-0 pb-2">
                         <div class="table-responsive p-0">
@@ -58,8 +61,8 @@
                                             <span class="text-secondary text-xs font-weight-bold">{{ date_format($currency->updated_at, 'd-m-Y') }}</span>
                                         </td>
                                         <td class="align-middle">
-                                            <a href="{{ route('currencies-edit', $currency->id) }}" class="m-2"><i class="fa fa-edit"></i></a>
-                                            <a href="{{ route('currencies-destroy', $currency->id) }}" class="m-2"><i class="fa fa-trash"></i></a>
+                                            <a href="{{ route('system-currencies-edit', $currency->id) }}" class="m-2"><i class="fa fa-edit"></i></a>
+                                            <a href="{{ route('system-currencies-destroy', $currency->id) }}" class="m-2"><i class="fa fa-trash"></i></a>
                                         </td>
                                     </tr>
                                     @endforeach
