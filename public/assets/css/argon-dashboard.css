@@ -21162,6 +21162,7 @@ hr.horizontal.gray-light {
 }
 .navbar-vertical.navbar-expand-xs.fixed-start {
   left: 0;
+  max-height: fit-content;
 }
 .navbar-vertical.navbar-expand-xs.fixed-end {
   right: 0;

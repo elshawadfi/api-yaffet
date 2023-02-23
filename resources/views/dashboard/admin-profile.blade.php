@@ -67,6 +67,9 @@
                                             <label for="example-text-input" class="form-control-label">Old Password</label>
                                             <input class="form-control" type="password" name="old_password"
                                                 placeholder="Enter old password">
+                                                @error('old_password')
+                                                    <div class="alert alert-danger">{{ $message }}</div>
+                                                @enderror
                                         </div>
                                     </div>
                                     <div class="col-md-12">
@@ -94,12 +97,12 @@
             </div>
             <div class="col-md-4">
                 <div class="card card-profile">
-                    <img src="/img/bg-profile.jpg" alt="Image placeholder" class="card-img-top">
+                    <img src="/img/yaffet.png" alt="Image placeholder" class="card-img-top">
                     <div class="row justify-content-center">
                         <div class="col-4 col-lg-4 order-lg-2">
                             <div class="mt-n4 mt-lg-n6 mb-4 mb-lg-0">
                                 <a href="javascript:;">
-                                    <img src="/img/team-2.jpg"
+                                    <img src="/img/admin.png"
                                         class="rounded-circle img-fluid border border-2 border-white">
                                 </a>
                             </div>
